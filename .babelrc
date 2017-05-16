@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "react-hot-loader/babel",
+    ["lodash", { "id": ["lodash", "recompose", "semantic-ui-react"] }]
+  ],
+  "presets": [
+    ["es2015", {"modules": false}],
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"]
+    },
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+}

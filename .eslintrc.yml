@@ -1,0 +1,41 @@
+---
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+env:
+  browser: true
+  amd: true
+  es6: true
+  node: true
+  mocha: true
+globals:
+  __DEVELOPMENT__: false
+  __DEVTOOLS__: false
+  expect: false
+extends:
+  - airbnb
+
+settings:
+  import/resolver:
+    webpack:
+      config:
+        resolve:
+          extensions:
+            - ".js"
+          modules:
+            - "src"
+            - "node_modules"
+rules:
+  comma-dangle:
+    - warn
+    - always-multiline
+  no-constant-condition:
+    - warn
+    - checkLoops: false
+
+  react/jsx-filename-extension: 'off'
+  react/jsx-wrap-multilines: 'off'
+  react/forbid-prop-types: 'off'
