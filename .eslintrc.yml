@@ -21,13 +21,7 @@ extends:
 settings:
   import/resolver:
     webpack:
-      config:
-        resolve:
-          extensions:
-            - ".js"
-          modules:
-            - "src"
-            - "node_modules"
+      config: webpack/webpack.dev.js
 rules:
   comma-dangle:
     - warn
