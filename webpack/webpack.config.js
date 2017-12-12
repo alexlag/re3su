@@ -65,19 +65,42 @@ module.exports = (env = {}) => {
           ],
         },
         {
-          test: /\.css$/,
-          use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
-        }, {
-          test: /\.scss$/,
-          use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'] }),
-        },
-        {
           test: /\.(ico|jpg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
           loader: 'file-loader?limit=100000',
         }, {
           test: /\.svg$/,
           loader: 'file-loader',
         },
+        ...(isBuild ? [
+          {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: 'css-loader'
+            }),
+          }, {
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: ['css-loader', 'sass-loader']
+            }),
+          },
+        ] : [
+          {
+            test: /\.css$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+            ],
+          }, {
+            test: /\.scss$/,
+            use: [
+              { loader: 'style-loader' },
+              { loader: 'css-loader' },
+              { loader: 'sass-loader' },
+            ],
+          },
+        ]),
       ],
     },
 
@@ -91,8 +114,8 @@ module.exports = (env = {}) => {
       }),
       new HtmlWebpackPlugin({
         template: './index.html',
+        favicon: './favicon.ico',
       }),
-      new ExtractTextPlugin(isDev ? '[name].css' : '[name].[contenthash:8].css'),
       ...(isDev ? [
         new webpack.DefinePlugin({
           'process.env': {
@@ -115,6 +138,7 @@ module.exports = (env = {}) => {
           __DEVELOPMENT__: false,
           __DEVTOOLS__: false,
         }),
+        new ExtractTextPlugin('[name].[contenthash:8].css'),
         new webpack.LoaderOptionsPlugin({
           minimize: true,
           debug: false
