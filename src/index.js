@@ -1,26 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
-import combinedReducer from 'reducer';
-import App from './App';
+import combinedReducer from 'reducer'
+import App from './App'
 
-const composeEnhancers = composeWithDevTools({});
+const composeEnhancers = composeWithDevTools({})
 
 const store = createStore(
   combinedReducer,
   composeEnhancers(
-    applyMiddleware(thunk),
+    applyMiddleware(thunk)
   )
-);
+)
 
-const dest = document.getElementById('root');
+const dest = document.getElementById('root')
 
-function render() {
+function render () {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
@@ -28,12 +28,12 @@ function render() {
       </Provider>
     </AppContainer>,
     dest
-  );
+  )
 }
 
-render(App);
+render(App)
 
 if (__DEVELOPMENT__ && module.hot) {
-  module.hot.accept('./App', render);
-  module.hot.accept('reducer', () => store.replaceReducer(combinedReducer));
+  module.hot.accept('./App', render)
+  module.hot.accept('reducer', () => store.replaceReducer(combinedReducer))
 }

@@ -1,10 +1,10 @@
-import base from './base';
+import base from './base'
 
 const dist = {
-  env: 'dist',
-};
+  env: 'dist'
+}
 
 export default {
   ...base,
-  ...dist,
-};
+  ...dist
+}

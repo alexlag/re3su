@@ -1,26 +1,26 @@
-import 'semantic-ui-css/semantic.css';
-import 'styles/main.scss';
+import 'semantic-ui-css/semantic.css'
+import 'styles/main.scss'
 
-import React from 'react';
-import T from 'prop-types';
-import { connect } from 'react-redux';
-import { Container } from 'semantic-ui-react';
+import React from 'react'
+import T from 'prop-types'
+import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
 
-import Hello from 'components/Hello';
+import Hello from 'components/Hello'
 
 const App = ({ to }) =>
   <Container>
     <Hello to={to} />
-  </Container>;
+  </Container>
 
 App.propTypes = {
-  to: T.string.isRequired,
-};
-
-function mapStateToProps(state) {
-  return {
-    to: state.to,
-  };
+  to: T.string.isRequired
 }
 
-export default connect(mapStateToProps)(App);
+function mapStateToProps (state) {
+  return {
+    to: state.to
+  }
+}
+
+export default connect(mapStateToProps)(App)

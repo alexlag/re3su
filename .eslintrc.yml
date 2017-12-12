@@ -17,6 +17,7 @@ globals:
   expect: false
 extends:
   - standard
+  - standard-react
 
 settings:
   import/resolver:
