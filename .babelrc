@@ -4,8 +4,7 @@
     ["lodash", { "id": ["lodash", "recompose", "semantic-ui-react"] }]
   ],
   "presets": [
-    ["es2015", {"modules": false}],
-    "stage-0",
+    ["env", {"modules": false}],
     "react"
   ],
   "env": {
