@@ -1,10 +1,8 @@
 import base from './base'
 
 const dist = {
-  env: 'dist'
+  env: 'dist',
+  defaultTo: 'world'
 }
 
-export default {
-  ...base,
-  ...dist
-}
+export default Object.assign({}, base, dist)

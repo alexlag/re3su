@@ -49,7 +49,7 @@ module.exports = (env = {}) => {
 
     resolve: {
       alias: {
-        config: `${PATHS.src}/config/${process.env.NODE_ENV}`
+        Config$: isBuild ? `config/dist` : 'config/dev'
       },
       extensions: ['.js', '.jsx', '.json'],
       modules: ['src', 'node_modules']
