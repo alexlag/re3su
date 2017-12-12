@@ -4,8 +4,9 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --config webpack/webpack.prod.js",
-    "start": "node webpack/server.js",
+    "clean": "rimraf dist",
+    "build": "webpack --config webpack/webpack.config.js --env.build --env.sourceMap",
+    "start": "webpack-dev-server --config webpack/webpack.config.js --open",
     "test": "jest --color"
   },
   "devDependencies": {
