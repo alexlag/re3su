@@ -16,22 +16,9 @@ globals:
   __DEVTOOLS__: false
   expect: false
 extends:
-  - airbnb
+  - standard
 
 settings:
   import/resolver:
     webpack:
-      config: webpack/webpack.dev.js
-rules:
-  comma-dangle:
-    - warn
-    - always-multiline
-  no-constant-condition:
-    - warn
-    - checkLoops: false
-
-  react/jsx-filename-extension: 'off'
-  react/jsx-wrap-multilines: 'off'
-  react/forbid-prop-types: 'off'
-
-  jsx-a11y/href-no-hash: 'off'
+      config: webpack/webpack.config.js
