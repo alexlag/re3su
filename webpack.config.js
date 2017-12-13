@@ -115,8 +115,7 @@ module.exports = (env = {}) => {
           'process.env': {
             NODE_ENV: JSON.stringify('development')
           },
-          __DEVELOPMENT__: true,
-          __DEVTOOLS__: true
+          __DEVELOPMENT__: true
         }),
         new FriendlyErrorsWebpackPlugin({
           compilationSuccessInfo: {
@@ -134,8 +133,7 @@ module.exports = (env = {}) => {
           'process.env': {
             NODE_ENV: JSON.stringify('production')
           },
-          __DEVELOPMENT__: false,
-          __DEVTOOLS__: false
+          __DEVELOPMENT__: false
         }),
         new ExtractTextPlugin('[name].[contenthash:8].css'),
         new webpack.LoaderOptionsPlugin({
