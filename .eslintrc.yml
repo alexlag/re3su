@@ -10,3 +10,8 @@ globals:
 extends:
   - standard
   - standard-react
+  - plugin:import/errors
+  - plugin:import/warnings
+
+settings:
+  import/resolver: webpack
