@@ -9,6 +9,24 @@
     "start": "webpack-dev-server --config webpack/webpack.config.js --open",
     "test": "jest --color"
   },
+  "babel": {
+    "plugins": [
+      "react-hot-loader/babel",
+      ["lodash", { "id": ["lodash", "recompose", "semantic-ui-react"] }]
+    ],
+    "presets": [
+      ["env", {"modules": false}],
+      "react"
+    ],
+    "env": {
+      "production": {
+        "presets": ["react-optimize"]
+      },
+      "test": {
+        "plugins": ["transform-es2015-modules-commonjs"]
+      }
+    }
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
