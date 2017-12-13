@@ -4,10 +4,8 @@ import { pick } from 'lodash'
 
 export async function base (params) {
   try {
-    const { status, data } = await axios({
-      baseURL: config.apiUrl,
-      ...params
-    })
+    const props = Object.assign({ baseURL: config.apiUrl }, params)
+    const { status, data } = await axios(props)
     if (status >= 200 && status < 300) {
       return { data }
     }
