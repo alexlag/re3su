@@ -27,6 +27,10 @@
       }
     }
   },
+  "browserslist": [
+    "> 5%",
+    "last 2 versions"
+  ],
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",

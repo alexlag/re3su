@@ -60,45 +60,36 @@ module.exports = (env = {}) => {
         {
           test: /\.jsx?$/,
           include: PATHS.src,
-          use: [
-            { loader: 'babel-loader' }
-          ]
+          use: 'babel-loader'
         },
         {
           test: /\.(ico|jpg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
-          loader: 'file-loader?limit=100000'
+          use: 'file-loader?limit=100000'
         }, {
           test: /\.svg$/,
-          loader: 'file-loader'
+          use: 'file-loader'
         },
         ...(isBuild ? [
           {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
               fallback: 'style-loader',
-              use: 'css-loader'
+              use: ['css-loader', 'postcss-loader']
             })
           }, {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({
               fallback: 'style-loader',
-              use: ['css-loader', 'sass-loader']
+              use: ['css-loader', 'postcss-loader', 'sass-loader']
             })
           }
         ] : [
           {
             test: /\.css$/,
-            use: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' }
-            ]
+            use: ['style-loader', 'css-loader', 'postcss-loader']
           }, {
             test: /\.scss$/,
-            use: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              { loader: 'sass-loader' }
-            ]
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
           }
         ])
       ]
