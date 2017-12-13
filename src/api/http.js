@@ -1,4 +1,4 @@
-import config from 'config'
+import config from 'Config'
 import axios from 'axios'
 import { pick } from 'lodash'
 
