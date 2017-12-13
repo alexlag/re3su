@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack --env.build --env.sourceMap",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --env.port=3000",
     "test": "jest --color"
   },
   "babel": {

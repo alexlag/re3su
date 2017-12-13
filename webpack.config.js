@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const PATHS = {
   root: path.resolve(__dirname, '.'),
@@ -15,7 +16,8 @@ const DEV_SERVER = {
   hot: true,
   hotOnly: true,
   historyApiFallback: true,
-  overlay: true
+  overlay: true,
+  quiet: true
   // stats: 'verbose',
   // proxy: {
   //   '/api': 'http://localhost:3000'
@@ -26,11 +28,12 @@ module.exports = (env = {}) => {
   const isBuild = !!env.build
   const isDev = !env.build
   const isSourceMap = !!env.sourceMap || isDev
+  const port = env.port || 8080
 
   return {
     cache: true,
     devtool: isDev ? 'eval-source-map' : 'source-map',
-    devServer: DEV_SERVER,
+    devServer: Object.assign({}, DEV_SERVER, { port }),
 
     context: PATHS.root,
 
@@ -114,6 +117,11 @@ module.exports = (env = {}) => {
           },
           __DEVELOPMENT__: true,
           __DEVTOOLS__: true
+        }),
+        new FriendlyErrorsWebpackPlugin({
+          compilationSuccessInfo: {
+            messages: [`Your application is running here: http://localhost:${port}`]
+          }
         }),
         new webpack.HotModuleReplacementPlugin({
           // multiStep: true, // better performance with many files
