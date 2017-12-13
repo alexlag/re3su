@@ -5,10 +5,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const PATHS = {
-  root: path.resolve(__dirname, '..'),
-  nodeModules: path.resolve(__dirname, '../node_modules'),
-  src: path.resolve(__dirname, '../src'),
-  dist: path.resolve(__dirname, '../dist')
+  root: path.resolve(__dirname, '.'),
+  nodeModules: path.resolve(__dirname, './node_modules'),
+  src: path.resolve(__dirname, './src'),
+  dist: path.resolve(__dirname, './dist')
 }
 
 const DEV_SERVER = {

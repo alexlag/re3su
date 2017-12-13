@@ -1,16 +1,8 @@
 ---
 parser: babel-eslint
-parserOptions:
-  ecmaVersion: 6
-  sourceType: module
-  ecmaFeatures:
-    jsx: true
 env:
   browser: true
-  amd: true
   es6: true
-  node: true
-  mocha: true
 globals:
   __DEVELOPMENT__: false
   __DEVTOOLS__: false
@@ -18,8 +10,3 @@ globals:
 extends:
   - standard
   - standard-react
-
-settings:
-  import/resolver:
-    webpack:
-      config: webpack/webpack.config.js

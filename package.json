@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "webpack --config webpack/webpack.config.js --env.build --env.sourceMap",
-    "start": "webpack-dev-server --config webpack/webpack.config.js --open",
+    "build": "webpack --env.build --env.sourceMap",
+    "start": "webpack-dev-server",
     "test": "jest --color"
   },
   "babel": {
