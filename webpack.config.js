@@ -46,8 +46,8 @@ module.exports = (env = {}) => {
     },
     output: {
       path: PATHS.dist,
-      filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
-      publicPath: '/'
+      filename: isDev ? '[name].js' : 'js/[name].[chunkhash:8].js',
+      publicPath: ''
       // chunkFilename: '[id].chunk.js',
     },
 
@@ -67,11 +67,23 @@ module.exports = (env = {}) => {
           use: 'babel-loader'
         },
         {
-          test: /\.(ico|jpg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
-          use: 'file-loader?limit=100000'
-        }, {
-          test: /\.svg$/,
-          use: 'file-loader'
+          test: /\.(ico|jpg|png|gif|svg)(\?.*)?$/,
+          loader: 'file-loader',
+          options: {
+            limit: 100000,
+            name: '[name].[hash:8].[ext]',
+            outputPath: './images/',
+            publicPath: './.'
+          }
+        },
+        {
+          test: /\.(eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash:8].[ext]',
+            outputPath: './fonts/',
+            publicPath: './.'
+          }
         },
         ...(isBuild ? [
           {
@@ -136,7 +148,7 @@ module.exports = (env = {}) => {
           },
           __DEVELOPMENT__: false
         }),
-        new ExtractTextPlugin('[name].[contenthash:8].css'),
+        new ExtractTextPlugin('css/[name].[contenthash:8].css'),
         new webpack.LoaderOptionsPlugin({
           minimize: true,
           debug: false
