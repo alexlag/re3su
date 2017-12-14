@@ -40,6 +40,7 @@ module.exports = (env = {}) => {
     entry: {
       app: [
         'react-hot-loader/patch',
+        'babel-polyfill',
         './src/index.js'
       ]
     },
