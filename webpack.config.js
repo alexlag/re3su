@@ -73,6 +73,17 @@ module.exports = (env = {}) => {
           test: /\.svg$/,
           use: 'file-loader'
         },
+        // Dev loaders
+        ...(isDev ? [
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader']
+          }, {
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+          }
+        ] : []),
+        // Build loaders
         ...(isBuild ? [
           {
             test: /\.css$/,
@@ -87,15 +98,7 @@ module.exports = (env = {}) => {
               use: ['css-loader', 'postcss-loader', 'sass-loader']
             })
           }
-        ] : [
-          {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader']
-          }, {
-            test: /\.scss$/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
-          }
-        ])
+        ] : [])
       ]
     },
 
@@ -111,6 +114,7 @@ module.exports = (env = {}) => {
         template: './index.html',
         favicon: './favicon.ico'
       }),
+      // Dev plugins
       ...(isDev ? [
         new webpack.DefinePlugin({
           'process.env': {
@@ -128,6 +132,7 @@ module.exports = (env = {}) => {
         }),
         new webpack.NamedModulesPlugin()
       ] : []),
+      // Build plugins
       ...(isBuild ? [
         new CleanWebpackPlugin(['dist']),
         new webpack.DefinePlugin({
