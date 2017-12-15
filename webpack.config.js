@@ -53,7 +53,7 @@ module.exports = (env = {}) => {
 
     resolve: {
       alias: {
-        Config$: isBuild ? `config/dist` : 'config/dev'
+        Config$: isBuild ? 'config/dist' : 'config/dev'
       },
       extensions: ['.js', '.jsx', '.json'],
       modules: ['src', 'node_modules']
