@@ -5,6 +5,9 @@ env:
   es6: true
 globals:
   __DEVELOPMENT__: false
+
+  describe: false
+  it: false
   expect: false
 extends:
   - standard
