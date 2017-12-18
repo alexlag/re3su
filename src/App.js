@@ -6,21 +6,32 @@ import T from 'prop-types'
 import { connect } from 'react-redux'
 import { Container } from 'semantic-ui-react'
 
-import Hello from 'components/Hello'
+import { increase } from './reducer/count'
 
-const App = ({ to }) =>
+import Hello from './components/Hello'
+import Counter from './components/Counter'
+
+const App = ({ to, count, increseCounter }) =>
   <Container>
     <Hello to={to} />
+    <Counter count={count} onTick={increseCounter} />
   </Container>
 
 App.propTypes = {
-  to: T.string.isRequired
+  to: T.string.isRequired,
+  count: T.number.isRequired,
+  increseCounter: T.func.isRequired
 }
 
 function mapStateToProps (state) {
   return {
-    to: state.to
+    to: state.to,
+    count: state.count
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDisptchToProps = {
+  increseCounter: increase
+}
+
+export default connect(mapStateToProps, mapDisptchToProps)(App)
