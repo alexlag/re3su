@@ -147,11 +147,10 @@ module.exports = (env = {}) => {
           debug: false
         }),
         new webpack.optimize.UglifyJsPlugin({
-          beautify: false,
-          compress: {
-            screw_ie8: true
+          uglifyOptions: {
+            ie8: false,
+            mangle: false
           },
-          comments: false,
           sourceMap: isSourceMap
         })
       ] : [])
