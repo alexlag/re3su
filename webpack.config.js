@@ -30,9 +30,11 @@ module.exports = (env = {}) => {
   const isSourceMap = !!env.sourceMap || isDev
   const port = env.port || 8080
 
+  const devtool = isDev ? 'eval-source-map' : (isSourceMap ? 'source-map' : false)
+
   return {
     cache: true,
-    devtool: isDev ? 'eval-source-map' : 'source-map',
+    devtool: devtool,
     devServer: Object.assign({}, DEV_SERVER, { port }),
 
     context: PATHS.root,
@@ -134,7 +136,7 @@ module.exports = (env = {}) => {
       ] : []),
       // Build plugins
       ...(isBuild ? [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin([PATHS.dist]),
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify('production')
