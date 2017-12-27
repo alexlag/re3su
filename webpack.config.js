@@ -116,6 +116,11 @@ module.exports = (env = {}) => {
         template: './index.html',
         favicon: './favicon.ico'
       }),
+      new webpack.NamedModulesPlugin(),
+      new webpack.NamedChunksPlugin((chunk) => {
+        if (chunk.name) return chunk.name
+        return chunk.mapModules(m => path.relative(m.context, m.request)).join('_')
+      }),
       // Dev plugins
       ...(isDev ? [
         new webpack.DefinePlugin({
@@ -131,12 +136,12 @@ module.exports = (env = {}) => {
         }),
         new webpack.HotModuleReplacementPlugin({
           // multiStep: true, // better performance with many files
-        }),
-        new webpack.NamedModulesPlugin()
+        })
       ] : []),
       // Build plugins
       ...(isBuild ? [
         new CleanWebpackPlugin([PATHS.dist]),
+        new webpack.HashedModuleIdsPlugin(),
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify('production')
