@@ -50,13 +50,15 @@
     "last 2 versions"
   ],
   "jest": {
-    "setupFiles": ["./jest.setup.js"],
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-jest": "^21.2.0",
+    "babel-eslint": "^8.1.2",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
@@ -67,8 +69,8 @@
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "eslint": "^4.13.1",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.14.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -79,10 +81,10 @@
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
+    "file-loader": "^1.1.6",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^21.2.1",
+    "jest": "^22.0.4",
     "jest-enzyme": "^4.0.1",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.9",
@@ -113,6 +115,6 @@
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.77.1",
-    "styled-components": "^2.2.4"
+    "styled-components": "^2.4.0"
   }
 }
