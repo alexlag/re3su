@@ -33,7 +33,9 @@ function render () {
 
 render(App)
 
-if (__DEVELOPMENT__ && module.hot) {
-  module.hot.accept('./App', render)
-  module.hot.accept('reducer', () => store.replaceReducer(combinedReducer))
+if (__DEVELOPMENT__) {
+  if (module.hot) {
+    module.hot.accept('./App', render)
+    module.hot.accept('reducer', () => store.replaceReducer(combinedReducer))
+  }
 }
